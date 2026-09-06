@@ -21,6 +21,7 @@
     --blush:#EFE6D6;
     --olive:#6E7150;
     --olive-deep:#565842;
+    --sage-light:#E2E8DA;
     --terracotta:#B96E42;
     --line: rgba(74,56,38,0.18);
   }
@@ -225,11 +226,13 @@
   .cd-box .lbl{ font-size:0.66rem; color:var(--beige); opacity:0.8; letter-spacing:0.04em; text-transform:uppercase; display:block; margin-top:6px; }
 
   /* venue */
-  #sec-venue{ background:var(--cream-2); margin:0 -22px; padding:88px 22px; text-align:center; }
+  #sec-venue{ background:var(--beige); margin:0 -22px; padding:88px 22px; text-align:center; }
+  #sec-venue .eyebrow{ color:var(--olive); }
   #sec-venue .section-title{ font-size:1.9rem; margin-top:6px; }
   #sec-venue .section-sub{
     color:var(--ink-soft); font-size:1rem; max-width:380px; margin:14px auto 0;
   }
+  #sec-venue .address-block p{ color:var(--ink); }
   .place-photo{
     width:100%; border-radius:16px; overflow:hidden;
     margin:32px 0 6px;
@@ -239,10 +242,10 @@
   .address-block{
     text-align:center; margin-top:26px;
   }
-  .address-block .addr{
+  #sec-venue .address-block .addr{
     font-family:'Cormorant Garamond', serif; font-size:1.5rem; color:var(--brown-dark); margin-top:6px;
   }
-  .map-btn{
+  #sec-venue .map-btn{
     display:inline-block; margin-top:20px;
     border:1.4px solid var(--brown-dark);
     color:var(--brown-dark);
@@ -250,7 +253,7 @@
     text-decoration:none; font-size:0.92rem; letter-spacing:0.02em;
     transition:all 0.25s ease;
   }
-  .map-btn:hover{ background:var(--brown-dark); color:var(--paper); }
+  #sec-venue .map-btn:hover{ background:var(--brown-dark); color:var(--paper); }
 
   /* palette */
   #sec-palette{ background:var(--cream-2); margin:0 -22px; padding:88px 22px; }
@@ -275,6 +278,9 @@
   .field{ margin-bottom:24px; }
   .field label.q{
     display:block; font-family:'Cormorant Garamond', serif; font-size:1.2rem; color:var(--brown-dark); margin-bottom:10px;
+  }
+  .field-hint{
+    font-size:0.82rem; color:var(--ink-soft); margin-top:8px; line-height:1.5;
   }
   input[type="text"], textarea{
     width:100%; border:1.4px solid var(--line);
@@ -447,6 +453,7 @@
       <div class="field">
         <label class="q" for="guestName">Как вас записать?</label>
         <input type="text" id="guestName" name="guestName" placeholder="Имя и фамилия" required>
+        <p class="field-hint">Если вы собираетесь прийти с парой, то просьба заполнить анкету от каждого лица</p>
       </div>
 
       <div class="field">
@@ -460,12 +467,14 @@
       <div class="field">
         <label class="q">Какой алкоголь предпочитаете?</label>
         <div class="options" id="drinkGroup">
-          <label class="opt"><input type="radio" name="drink" value="Шампанское" required> Шампанское</label>
-          <label class="opt"><input type="radio" name="drink" value="Белое вино"> Белое вино</label>
-          <label class="opt"><input type="radio" name="drink" value="Красное вино"> Красное вино</label>
-          <label class="opt"><input type="radio" name="drink" value="Водка"> Водка</label>
-          <label class="opt"><input type="radio" name="drink" value="Не пью"> Не пью</label>
-          <label class="opt"><input type="radio" name="drink" value="Другое" id="drinkOther"> Другое</label>
+          <label class="opt"><input type="checkbox" name="drink" value="Шампанское"> Шампанское</label>
+          <label class="opt"><input type="checkbox" name="drink" value="Белое вино (сухое)"> Белое вино (сухое)</label>
+          <label class="opt"><input type="checkbox" name="drink" value="Белое вино (сладкое)"> Белое вино (сладкое)</label>
+          <label class="opt"><input type="checkbox" name="drink" value="Красное вино (сухое)"> Красное вино (сухое)</label>
+          <label class="opt"><input type="checkbox" name="drink" value="Красное вино (сладкое)"> Красное вино (сладкое)</label>
+          <label class="opt"><input type="checkbox" name="drink" value="Водка"> Водка</label>
+          <label class="opt"><input type="checkbox" name="drink" value="Не пью"> Не пью</label>
+          <label class="opt"><input type="checkbox" name="drink" value="Другое" id="drinkOther"> Другое</label>
         </div>
         <div class="other-input" id="otherWrap">
           <input type="text" id="otherText" placeholder="Напишите, что предпочитаете">
@@ -541,14 +550,18 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // ---------- Radio active styling ----------
+  // ---------- Radio/checkbox active styling ----------
   document.querySelectorAll('.opt').forEach(opt => {
     const input = opt.querySelector('input');
     input.addEventListener('change', () => {
-      const name = input.name;
-      document.querySelectorAll(`input[name="${name}"]`).forEach(i => {
-        i.closest('.opt').classList.toggle('active', i.checked);
-      });
+      if (input.type === 'checkbox') {
+        opt.classList.toggle('active', input.checked);
+      } else {
+        const name = input.name;
+        document.querySelectorAll(`input[name="${name}"]`).forEach(i => {
+          i.closest('.opt').classList.toggle('active', i.checked);
+        });
+      }
     });
   });
 
@@ -556,15 +569,13 @@
   const drinkOther = document.getElementById('drinkOther');
   const otherWrap = document.getElementById('otherWrap');
   const otherText = document.getElementById('otherText');
-  document.querySelectorAll('input[name="drink"]').forEach(i => {
-    i.addEventListener('change', () => {
-      if (drinkOther.checked) {
-        otherWrap.classList.add('show');
-      } else {
-        otherWrap.classList.remove('show');
-        otherText.value = '';
-      }
-    });
+  drinkOther.addEventListener('change', () => {
+    if (drinkOther.checked) {
+      otherWrap.classList.add('show');
+    } else {
+      otherWrap.classList.remove('show');
+      otherText.value = '';
+    }
   });
 
   // ---------- Form submit -> Google Таблица ----------
@@ -580,10 +591,20 @@
 
     const guestNameVal = document.getElementById('guestName').value.trim();
     const attendVal = (form.querySelector('input[name="attend"]:checked') || {}).value || '';
-    let alcoholVal = (form.querySelector('input[name="drink"]:checked') || {}).value || '';
-    if (alcoholVal === 'Другое' && otherText.value.trim()) {
-      alcoholVal = otherText.value.trim();
+
+    const drinkChecked = Array.from(form.querySelectorAll('input[name="drink"]:checked'));
+    if (drinkChecked.length === 0) {
+      alert('Пожалуйста, выберите хотя бы один вариант напитка');
+      return;
     }
+    const drinkValues = drinkChecked.map(i => {
+      if (i.value === 'Другое') {
+        return otherText.value.trim() || 'Другое';
+      }
+      return i.value;
+    });
+    const alcoholVal = drinkValues.join(', ');
+
     const commentsVal = document.getElementById('comment').value.trim();
 
     // Названия ключей совпадают со столбцами в Google Таблице
