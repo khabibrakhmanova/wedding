@@ -225,16 +225,17 @@
   .cd-box .lbl{ font-size:0.66rem; color:var(--beige); opacity:0.8; letter-spacing:0.04em; text-transform:uppercase; display:block; margin-top:6px; }
 
   /* venue */
-  #sec-venue{ background:var(--cream-2); margin:0 -22px; padding:88px 22px; }
-  .venue-photo{
-    width:100%; aspect-ratio:4/3; border-radius:16px;
-    border:1.5px dashed var(--taupe);
-    background:var(--paper);
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:10px; color:var(--ink-soft); text-align:center; padding:16px;
+  #sec-venue{ background:var(--cream-2); margin:0 -22px; padding:88px 22px; text-align:center; }
+  #sec-venue .section-title{ font-size:1.9rem; margin-top:6px; }
+  #sec-venue .section-sub{
+    color:var(--ink-soft); font-size:1rem; max-width:380px; margin:14px auto 0;
   }
-  .venue-photo svg{ opacity:0.5; }
-  .venue-photo span{ font-size:0.88rem; max-width:220px; }
+  .place-photo{
+    width:100%; border-radius:16px; overflow:hidden;
+    margin:32px 0 6px;
+    box-shadow:0 14px 34px rgba(58,50,38,0.18);
+  }
+  .place-photo img{ width:100%; height:auto; display:block; }
   .address-block{
     text-align:center; margin-top:26px;
   }
@@ -252,11 +253,8 @@
   .map-btn:hover{ background:var(--brown-dark); color:var(--paper); }
 
   /* palette */
-  #sec-palette{ background:var(--olive-deep); margin:0 -22px; padding:88px 22px; }
-  #sec-palette .palette-title{ color:var(--cream); }
-  #sec-palette .palette-text{ color:var(--beige); }
-  #sec-palette .palette-note{ color:var(--beige); }
-  .palette-title{ font-size:2.4rem; text-align:center; line-height:1.15; }
+  #sec-palette{ background:var(--cream-2); margin:0 -22px; padding:88px 22px; }
+  .palette-title{ font-size:2.3rem; text-align:center; line-height:1.15; color:var(--brown-dark); }
   .palette-text{
     text-align:center; color:var(--ink-soft); font-size:1rem; max-width:400px;
     margin:18px auto 0;
@@ -265,7 +263,7 @@
     display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:34px auto 8px; max-width:400px;
   }
   .palette-row.row2{ margin-top:16px; }
-  .swatch{ width:52px; height:52px; border-radius:50%; box-shadow:0 3px 10px rgba(0,0,0,0.35); border:2px solid rgba(255,255,255,0.25); }
+  .swatch{ width:60px; height:60px; border-radius:50%; box-shadow:0 3px 10px rgba(58,50,38,0.18); }
   .palette-note{
     text-align:center; margin-top:26px; color:var(--ink-soft); font-size:0.95rem;
     font-family:'Cormorant Garamond', serif; font-style:italic; max-width:340px; margin-left:auto; margin-right:auto;
@@ -405,12 +403,12 @@
 
   <!-- VENUE -->
   <section class="reveal" id="sec-venue">
-    <div class="eyebrow" style="text-align:center;">место торжества</div>
+    <div class="eyebrow">место торжества</div>
     <h2 class="section-title">Где мы вас ждём</h2>
     <div class="section-sub">Праздник пройдёт в оранжерее — среди леса и тёплого света</div>
 
     <div class="place-photo">
-      <img src="Оранжерея.jpg">
+      <img src="Оранжерея.jpg" alt="Оранжерея в лесу">
     </div>
 
     <div class="address-block">
@@ -422,18 +420,18 @@
 
   <!-- PALETTE -->
   <section class="reveal" id="sec-palette">
-    <h2 class="palette-title">Цветовая гамма<br>праздника</h2>
-    <p class="palette-text">Мы будем очень рады, если вы поддержите цветовую гамму праздника</p>
+    <h2 class="palette-title">Цветовая гамма праздника</h2>
+    <p class="palette-text">Мы будем очень благодарны, если вы поддержите наши оттенки в своих нарядах</p>
 
     <div class="palette-row">
-      <div class="swatch" style="background:#1a1a1a;" title="чёрный"></div>
-      <div class="swatch" style="background:#4a3626;" title="тёмно-коричневый"></div>
-      <div class="swatch" style="background:#8a6a52;" title="коричневый"></div>
-      <div class="swatch" style="background:#B96E42;" title="терракотовый"></div>
-      <div class="swatch" style="background:#e8ddd0;" title="бежевый"></div>
+      <div class="swatch" style="background:#181410;" title="чёрный"></div>
+      <div class="swatch" style="background:#59493d;" title="тёмно-коричневый"></div>
+      <div class="swatch" style="background:#8c7b6c;" title="коричневый"></div>
+      <div class="swatch" style="background:#ded0b9;" title="бежевый"></div>
+      <div class="swatch" style="background:#efe8db;" title="светлый бежевый"></div>
     </div>
     <div class="palette-row row2">
-      <div class="swatch" style="background:#a9bb9c;" title="светло-оливковый"></div>
+      <div class="swatch" style="background:#a8c0a4;" title="светло-оливковый"></div>
       <div class="swatch" style="background:#5f6e3f;" title="оливковый"></div>
     </div>
 
