@@ -405,7 +405,7 @@
   <section class="reveal" id="sec-venue">
     <div class="eyebrow">место торжества</div>
     <h2 class="section-title">Где мы вас ждём</h2>
-    <div class="section-sub">Праздник пройдёт в оранжерее — среди леса и тёплого света</div>
+    <div class="section-sub">Праздник пройдёт в оранжерее — среди леса, родных и близких людей и тёплого света</div>
 
     <div class="place-photo">
       <img src="Оранжерея.jpg" alt="Оранжерея в лесу">
@@ -490,7 +490,7 @@
   <section class="closing reveal" id="sec-closing">
     <div class="closing-bar"></div>
     <h2>До встречи на свадьбе!</h2>
-    <p class="gift-text">Если вы думаете о подарке для нас — для молодой семьи лучшим подарком станут деньги. Мы будем благодарны за понимание.</p>
+    <p class="gift-text">Если думаете, что нам подарить, — не думайте. Деньги — лучший друг молодой семьи. Спасибо за понимание.</p>
     <p class="thank-line">Спасибо, что вы с нами ♡</p>
     <p class="sub">Лиана &amp; Руслан · 17.10.2026 · Уфа</p>
   </section>
