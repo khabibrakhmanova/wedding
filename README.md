@@ -1,2 +1,2 @@
-# Save-the-date
+# wedding
 Wedding invitation
