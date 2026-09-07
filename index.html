@@ -255,6 +255,40 @@
   }
   #sec-venue .map-btn:hover{ background:var(--brown-dark); color:var(--paper); }
 
+  /* schedule */
+  #sec-schedule{
+    text-align:center; background:var(--brown-dark);
+    margin:0 -22px; padding:88px 22px;
+  }
+  #sec-schedule .eyebrow{ color:var(--beige); }
+  .schedule-title{ font-size:2.3rem; margin-top:6px; color:var(--paper); }
+  .schedule-list{
+    position:relative;
+    max-width:300px; margin:50px auto 0;
+    display:flex; flex-direction:column; gap:22px;
+  }
+  .schedule-wave{
+    position:absolute;
+    inset:0;
+    width:100%; height:100%;
+    z-index:0; pointer-events:none;
+  }
+  .schedule-item{ position:relative; z-index:1; max-width:170px; margin:0 auto; }
+  .schedule-time{
+    display:inline-block; font-family:'Cormorant Garamond', serif;
+    font-size:2rem; color:var(--terracotta); line-height:1;
+    background:var(--brown-dark); padding:0 14px;
+  }
+  .schedule-text{
+    display:block; margin-top:8px; color:var(--beige); font-size:1.02rem;
+    line-height:1.4;
+  }
+  .schedule-heart{
+    position:relative; z-index:1;
+    display:flex; justify-content:center; margin-top:6px;
+  }
+  .schedule-heart svg{ opacity:0.9; }
+
   /* palette */
   #sec-palette{ background:var(--cream-2); margin:0 -22px; padding:88px 22px; }
   .palette-title{ font-size:2.3rem; text-align:center; line-height:1.15; color:var(--brown-dark); }
@@ -449,6 +483,38 @@
     </div>
   </section>
 
+  <!-- SCHEDULE -->
+  <section class="reveal" id="sec-schedule">
+    <h2 class="schedule-title center">Программа вечера</h2>
+
+    <div class="schedule-list">
+      <svg class="schedule-wave" viewBox="0 0 300 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M150,0 C270,25 270,55 150,80 C30,105 30,140 150,165 C270,190 270,225 150,250 C30,275 30,310 150,335 L150,400"
+          fill="none" stroke="var(--terracotta)" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+      <div class="schedule-item">
+        <span class="schedule-time">15:30</span>
+        <span class="schedule-text">Сбор гостей</span>
+      </div>
+      <div class="schedule-item">
+        <span class="schedule-time">16:00</span>
+        <span class="schedule-text">Торжественная церемония</span>
+      </div>
+      <div class="schedule-item">
+        <span class="schedule-time">17:00</span>
+        <span class="schedule-text">Начало банкета</span>
+      </div>
+      <div class="schedule-item">
+        <span class="schedule-time">23:00</span>
+        <span class="schedule-text">Завершение вечера</span>
+      </div>
+    </div>
+
+    <div class="schedule-heart">
+      <svg width="26" height="23" viewBox="0 0 20 18"><path d="M10 17C10 17 1 11 1 5.5C1 2.5 3.2 1 5.5 1C7.4 1 9 2.2 10 4C11 2.2 12.6 1 14.5 1C16.8 1 19 2.5 19 5.5C19 11 10 17 10 17Z" fill="var(--terracotta)"/></svg>
+    </div>
+  </section>
+
   <!-- PALETTE -->
   <section class="reveal" id="sec-palette">
     <h2 class="palette-title">Цветовая гамма праздника</h2>
@@ -458,7 +524,7 @@
       <div class="swatch" style="background:#181410;" title="чёрный"></div>
       <div class="swatch" style="background:#59493d;" title="тёмно-коричневый"></div>
       <div class="swatch" style="background:#8c7b6c;" title="коричневый"></div>
-      <div class="swatch" style="background:#FF7F50;" title="бежевый"></div>
+      <div class="swatch" style="background:#D48A73;" title="бежевый"></div>
       <div class="swatch" style="background:#ded0b9;" title="светлый бежевый"></div>
     </div>
     <div class="palette-row row2">
@@ -466,7 +532,7 @@
       <div class="swatch" style="background:#5f6e3f;" title="оливковый"></div>
     </div>
 
-    <p class="palette-note">Чёрный цвет мы просим оставить только для мужских образов</p>
+    <p class="palette-note">Чёрный цвет просим оставить только для мужских образов</p>
   </section>
 
   <!-- RSVP FORM -->
@@ -522,14 +588,13 @@
 
   <!-- WISHES -->
   <section class="reveal" id="sec-wishes">
-    <p class="eyebrow center">пожелания</p>
-    <h2 class="wishes-title">Немного важного</h2>
+    <h2 class="wishes-title">Важные детали</h2>
 
     <div class="wishes-row">
       <div class="wish-card">
         <div class="wish-icon">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text x="12" y="16" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="14" font-weight="600" fill="#4A3826">18+</text>
+            <text x="12" y="16" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-size="11" font-weight="600" fill="#4A3826">18+</text>
           </svg>
         </div>
         <p>Просим вас прийти без детей, чтобы полностью расслабиться и отдохнуть вместе с нами</p>
